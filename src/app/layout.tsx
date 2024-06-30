@@ -19,15 +19,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
     <body className={inter.className}>
+      
       <div className="w-full bg-[#121212] px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
         <Navbar />
       </div>
       <div className=" bg-[#171717] px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
         {children}
       </div>
+
     </body>
   </html>
   );

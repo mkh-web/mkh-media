@@ -1,9 +1,9 @@
 
 
-export default function Page() {
+export default function HomePage() {
   return (
-    <>
-      <div>sad</div>
-    </>
+    <div>
+        gg
+    </div>
   );
-}
+} 
