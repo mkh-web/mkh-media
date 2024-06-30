@@ -1,6 +1,10 @@
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import Image from "next/image";
+import { IoHomeOutline } from "react-icons/io5";
+import { FaUserFriends } from "react-icons/fa";
+import { MdAmpStories } from "react-icons/md";
+
 
 export default function Navbar() {
     return (
@@ -16,33 +20,15 @@ export default function Navbar() {
         <div className="hidden md:flex w-[50%] text-sm items-center justify-between text-white">
           <div className="flex gap-6 ">
             <Link href="/" className="flex items-center gap-2">
-              <Image
-                src="/home.png"
-                alt="Homepage"
-                width={16}
-                height={16}
-                className="w-4 h-4"
-              />
+              <IoHomeOutline/>
               <span>Homepage</span>
             </Link>
             <Link href="/" className="flex items-center gap-2">
-              <Image
-                src="/friends.png"
-                alt="Friends"
-                width={16}
-                height={16}
-                className="w-4 h-4"
-              />
+              <FaUserFriends/>
               <span>Friends</span>
             </Link>
             <Link href="/" className="flex items-center gap-2">
-              <Image
-                src="/stories.png"
-                alt="Stories"
-                width={16}
-                height={16}
-                className="w-4 h-4"
-              />
+              <MdAmpStories/>
               <span>Stories</span>
             </Link>
           </div>
