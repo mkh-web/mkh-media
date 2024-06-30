@@ -6,4 +6,4 @@ export default function Page() {
       <div>sad</div>
     </>
   );
-}npx create-next-app@latest
+}
