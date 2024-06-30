@@ -2,8 +2,8 @@
 
 export default function HomePage() {
   return (
-    <div>
-        gg
+    <div className="h-[100vh]">
+        
     </div>
   );
 } 
