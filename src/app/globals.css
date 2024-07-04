@@ -25,8 +25,14 @@ input{
 outline: none;
 }
 /*اساسيات - basics*/
-
-
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide{
+    scrollbar-width: none;
+}
+  
+/*شريط التمرير - scroll bar*/
 @layer utilities {
 .max-container {
 @apply mx-auto max-w-[1440px];
