@@ -24,6 +24,31 @@ border: none;
 input{
 outline: none;
 }
+/*شريط التمرير - scroll bar*/
+
+/* width */
+::-webkit-scrollbar {
+width: 2px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+background: #171717;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+background: #383838;
+border-radius: 8px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+background: #555;
+  }
+  
+/*شريط التمرير - scroll bar*/
+
 /*اساسيات - basics*/
 .scrollbar-hide::-webkit-scrollbar {
     display: none;

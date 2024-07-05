@@ -8,7 +8,7 @@ export default function AddPost() {
     return (
         <div className="p-4 bg-[#202020] shadow-sm rounded-lg flexBetween gap-4 text-sm">
 
-            <Image src={"/stories.jpeg"} width={48} height={48} alt="avatar" className=" w-12 h-12 object-cover rounded-full" />
+            <Image src={"https://images.pexels.com/photos/1368382/pexels-photo-1368382.jpeg?auto=compress&cs=tinysrgb&w=600"} width={48} height={48} alt="avatar" className=" w-12 h-12 object-cover rounded-full" />
 
             <div className="flex-1">
                 <div className="flex gap-4">

@@ -42,7 +42,7 @@ export default function Navbar() {
 
       <div className="hidden xl:flexCenter p-2 bg-[#202020] rounded-lg">
         <input type="text" placeholder="search" className="bg-transparent" />
-    <CiSearch/>
+        <CiSearch/>
       </div>
       </div>
 
@@ -70,11 +70,10 @@ export default function Navbar() {
 
           <SignedOut>
             <div className="flexCenter gap-1">
-
-
             <div className="cursor-pointer text-2xl ">
               <IoLogInOutline />
             </div>
+            
             <Link href={"/sign-in"} className=" text-base">
             Log in
             </Link>
