@@ -1,4 +1,4 @@
-import Post from "./Post";
+import Post from "./Post_comp/Post";
 
 
 export default function Feed() {

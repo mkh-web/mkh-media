@@ -1,8 +1,8 @@
-import AddPost from "@/components/AddPost";
+import AddPost from "@/components/middleBar/AddPost";
 import LeftMenu from "@/components/LeftMenu";
-import RightMenu from "@/components/RightMenu";
-import Stories from "@/components/Stories";
-import Feed from "@/components/Feed";
+import RightMenu from "@/components/RightBar/RightMenu";
+import Stories from "@/components/middleBar/Stories";
+import Feed from "@/components/middleBar/Feed";
 
 
 export default function HomePage() {
