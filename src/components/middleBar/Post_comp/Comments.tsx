@@ -22,7 +22,7 @@ export default function Comments() {
             <div className="">
                 <div className="flex justify-between gap-4 mt-4">
 
-                    <Image src={"https://images.pexels.com/photos/7615526/pexels-photo-7615526.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"}
+                    <Image src={"https://images.pexels.com/photos/13464716/pexels-photo-13464716.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"}
                         alt="user" width={40} height={40} className="h-10 w-10 rounded-full" />
 
                     <div className="flex flex-col gap-2 flex-1">
