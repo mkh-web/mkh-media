@@ -9,7 +9,7 @@ interface props {
 export default function Ad({ size }: props) {
     return (
         <div className="p-4 bg-[#202020] shadow-md text-sm rounded-lg">
-            <div className="flexBetween text-gray-500 font-medium">
+            <div className="flexBetween text-gray-500 font-medium mb-2">
                 <span>Sponsard Ads</span>
                 <HiDotsHorizontal />
             </div>
@@ -20,8 +20,9 @@ export default function Ad({ size }: props) {
                     <Image src={"https://images.pexels.com/photos/731217/pexels-photo-731217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}
                         fill alt="ads" className="rounded-lg  object-cover" />
                 </div>
+
                 <div className="flex items-center gap-4">
-                    <Image src={"https://images.pexels.com/photos/1368382/pexels-photo-1368382.jpeg?auto=compress&cs=tinysrgb&w=600"} width={48} height={48} alt="avatar" className=" w-12 h-12 object-cover rounded-full" />
+                    <Image src={"https://images.pexels.com/photos/1368382/pexels-photo-1368382.jpeg?auto=compress&cs=tinysrgb&w=600"} width={40} height={40} alt="avatar" className=" w-10 h-10 object-cover rounded-full" />
                     <span className=" text-orange-400">travel abroad for free</span>
                 </div>
                 <p className={size === "sm" ? "text-xs" : "text-sm"}>
