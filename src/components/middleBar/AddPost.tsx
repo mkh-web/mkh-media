@@ -1,21 +1,51 @@
 import Image from "next/image"
 import { MdOutlineEmojiEmotions } from "react-icons/md";
-import { FaPhotoVideo,FaVideo,FaPoll  } from "react-icons/fa";
+import { FaPhotoVideo, FaVideo, FaPoll } from "react-icons/fa";
 import { MdEventAvailable } from "react-icons/md";
+import prisma from "@/lib/client";
+import { auth } from "@clerk/nextjs/server";
 
 
 export default function AddPost() {
+
+    const {userId} = auth() // عشان تتخزن معلومات التسجيل هنا 
+ 
+    
+/*
+    async function testAction(formData:FormData) {//كذا تتعامل مع الفورم و بياناتتها
+        "use server"
+
+        if(!userId){
+            return //هذا احتياط لو كان مافي مستخدم
+        }
+
+
+        const desc = formData.get("desc") as string // كذا تسحب الداتا
+            //حطيناها في تراي كاتش عشاان خاطر لو صار ايروور
+        try {
+                prisma.post.create({//كرييت هو واحد من السيرفر اكشن
+                    data:{//داتا هي الداتا الي بتدخلها 
+                        userId: userId,
+                        desc:desc,
+                    }
+                })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+*/
     return (
         <div className="p-4 bg-[#202020] shadow-sm rounded-lg flexBetween gap-4 text-sm">
 
             <Image src={"https://images.pexels.com/photos/1368382/pexels-photo-1368382.jpeg?auto=compress&cs=tinysrgb&w=600"} width={48} height={48} alt="avatar" className=" w-12 h-12 object-cover rounded-full" />
 
             <div className="flex-1">
-                <div className="flex gap-4">
-                    <textarea name="" id="" placeholder="What happen today" className="flex-1 resize-none bg-[#171717] rounded-md p-4"></textarea>
+                <form action={/*testAction*/ ""} className="flex gap-4">
+                    <textarea name="desc" id="" placeholder="What happen today" className="flex-1 resize-none bg-[#171717] rounded-md p-4"></textarea>
                     <MdOutlineEmojiEmotions className=" cursor-pointer self-end text-xl text-orange-400" />
 
-                </div>
+                    <button>send</button>
+                </form>
                 <div className="flex items-center justify-start gap-4 mt-4 text-gray-400 flex-wrap">
 
                     <div className="flexCenter gap-2 cursor-pointer">
@@ -23,7 +53,7 @@ export default function AddPost() {
                         Photo
                     </div>
                     <div className="flexCenter gap-2 cursor-pointer">
-                        <FaVideo  className=" text-xl text-pink-400" />
+                        <FaVideo className=" text-xl text-pink-400" />
                         Video
                     </div>
                     <div className="flexCenter gap-2 cursor-pointer">
@@ -31,7 +61,7 @@ export default function AddPost() {
                         Event
                     </div>
                     <div className="flexCenter gap-2 cursor-pointer">
-                        <FaPoll  className=" text-xl text-blue-400" />
+                        <FaPoll className=" text-xl text-blue-400" />
                         Poll
                     </div>
 

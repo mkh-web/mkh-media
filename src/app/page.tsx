@@ -16,7 +16,7 @@ export default function HomePage() {
             <AddPost/>
             <Feed/>
           </div>
-        </div>
+        </div>  
         <div className="hidden lg:block w-[30%]"><RightMenu/></div>
     </div>
   );
