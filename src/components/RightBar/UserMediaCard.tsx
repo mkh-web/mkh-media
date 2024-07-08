@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { User } from "@prisma/client";
 interface props {
-    userID?: string,
+    user?: User,
 }
 
-export default function UserMediaCard({ userID }: props) {
+export default function UserMediaCard({ user }: props) {
     return (
         <div className="p-4 bg-[#202020] shadow-md text-sm rounded-lg flex flex-col gap-4">
             <div className="flexBetween font-medium ">
