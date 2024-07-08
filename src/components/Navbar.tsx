@@ -30,7 +30,7 @@ export default function Navbar() {
             <IoHomeOutline  className="text-2xl"/>
             <span>Homepage</span>
           </Link>
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/profile" className="flex items-center gap-2">
             <FaUserFriends  className="text-2xl"/>
             <span>Friends</span>
           </Link>

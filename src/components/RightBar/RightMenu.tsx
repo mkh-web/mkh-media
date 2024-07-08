@@ -14,11 +14,11 @@ export default function RightMenu({ user }: props) {
         <div className="flex flex-col gap-4">
             {user ? (
                 <>
-                <UserInfoCard user={user}/>
-                <UserMediaCard user={user}/>
-
+                    <UserInfoCard user={user} />
+                    <UserMediaCard user={user} />
                 </>
             ) : null}
+            
             <FriendRequest />
             <BirthDay />
             <Ad size="md" />

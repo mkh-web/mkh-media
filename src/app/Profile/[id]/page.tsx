@@ -32,14 +32,14 @@ export default async function Page({ params }: { params: { username: string } })
     if (currentUserID) {
         const res = await prisma.block.findFirst({
             where: {
-                blockerId: user?.id,
-                blockedId: currentUserID,
-            }
-        })
-
-        if (res) isBlocked = true
-        else isBlocked = false
-    }
+     adsadads           blockerId: user?.id,
+     adsadads           blockedId: currentUserID,
+     adsadads       }
+     adsadads   })
+adsadads
+     adsadads   if (res) isBlocked = true
+     adsadads   else isBlocked = false
+    }adsadads
     return (
         <>
             <div className="text-white flex gap-6 p-6">
@@ -49,9 +49,9 @@ export default async function Page({ params }: { params: { username: string } })
                         <div className="flexCenter flex-col">
 
                             <div className="w-full h-64 relative">
-                                <Image src={user.cover || "noCover.png"}
+                                <Image src={user?.cover || "noCover.png"}
                                     className=" object-cover shadow-lg rounded-lg" alt="img progile" fill />
-                                <Image src={user.avatar || "noAvatar.png"} alt="coverasdadsadasda"
+                                <Image src={user?.avatar || "noAvatar.png"} alt="coverasdadsadasda"
                                     className=" w-32 h-32 absolute left-0 right-0 m-auto -bottom-16 ring-black ring-2 rounded-full object-cover" width={120} height={120} />
                             </div>
                             <h1 className="mt-20 mb-4 text-1xl font-medium"> {(user?.name && user.surname) ? user.name + " " + user.surname : user?.username}</h1>
