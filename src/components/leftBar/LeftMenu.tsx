@@ -7,7 +7,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { TbFileCertificate } from "react-icons/tb";
 import { IoListSharp } from "react-icons/io5";
 import { IoIosSettings } from "react-icons/io";
-import Ad from "./Ad";
+import Ad from "../Ad";
 
 interface props {
     type: "home" | "profile"

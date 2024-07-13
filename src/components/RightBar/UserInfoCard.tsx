@@ -5,6 +5,9 @@ import { IoLocation, IoSchoolSharp } from "react-icons/io5";
 import { MdOutlineWork, MdDateRange } from "react-icons/md";
 import { FaLink } from "react-icons/fa6";
 import { User } from "@prisma/client";
+import { auth } from "@clerk/nextjs/server";
+import prisma from "@/lib/client";
+import UserinfoCardInteraction from "./UserinfoCardInteraction";
 
 
 interface props {
@@ -22,7 +25,45 @@ export default async function UserInfoCard({ user }: props) {
         day: "numeric",
     })
 
-    //checking the block section
+    let isUserBlocked = false;
+    let isFollowing = false;
+    let isFollowingSent = false;
+
+    const { userId: currentUserId } = auth();
+
+
+    if (currentUserId) {
+        //--------
+        const blockRes = await prisma.block.findFirst({
+            where: {
+                blockerId: currentUserId,
+                blockedId: user.id,
+            },
+        });
+        blockRes ? (isUserBlocked = true) : (isUserBlocked = false);
+
+        //--------
+        const followRes = await prisma.follower.findFirst({
+            where: {
+                followerId: currentUserId,
+                followingId: user.id,
+            },
+        });
+        followRes ? (isFollowing = true) : (isFollowing = false);
+
+        //--------
+        const followReqRes = await prisma.followRequest.findFirst({
+            where: {
+                senderId: currentUserId,
+                receiverId: user.id,
+            },
+        });
+        followReqRes ? (isFollowingSent = true) : (isFollowingSent = false);
+    }else{
+        return null
+    }
+
+
     return (
         <div className="p-4 bg-[#202020] shadow-md text-sm rounded-lg flex flex-col gap-4">
             <div className="flexBetween font-medium ">
@@ -69,10 +110,16 @@ export default async function UserInfoCard({ user }: props) {
                     </div>
                 </div>
 
-                <div className="flexBetween gap-3">
-                    <button className="bg-orange-400 text-white rounded-md shadow-md w-full h-8 hover:text-orange-400 hover:bg-white transition-all">Following</button>
-                    <button className="bg-red-400 text-white rounded-md shadow-md w-full h-8 hover:text-red-400 hover:bg-white transition-all">block</button>
-                </div>
+
+                <UserinfoCardInteraction
+                    userId={user.id}
+                    currentUserId={currentUserId}
+                    isUserBlocked={isUserBlocked}
+                    isFollowing={isFollowing}
+                    isFollowSent={isFollowingSent}
+                    />
+
+      
 
             </div>
         </div>

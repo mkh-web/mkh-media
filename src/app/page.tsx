@@ -1,5 +1,5 @@
 import AddPost from "@/components/middleBar/AddPost";
-import LeftMenu from "@/components/LeftMenu";
+import LeftMenu from "@/components/leftBar/LeftMenu";
 import RightMenu from "@/components/RightBar/RightMenu";
 import Stories from "@/components/middleBar/Stories";
 import Feed from "@/components/middleBar/Feed";
