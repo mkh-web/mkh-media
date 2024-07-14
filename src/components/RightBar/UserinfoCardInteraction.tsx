@@ -6,13 +6,11 @@ import { useState } from "react";
 export default function UserinfoCardInteraction(
     {
         userId,
-        currentUserId,
         isUserBlocked,
         isFollowing,
         isFollowSent,
     }: {
         userId: string;
-        currentUserId: string;
         isUserBlocked: boolean;
         isFollowing: boolean;
         isFollowSent: boolean;

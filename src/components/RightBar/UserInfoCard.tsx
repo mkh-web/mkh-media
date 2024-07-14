@@ -8,6 +8,7 @@ import { User } from "@prisma/client";
 import { auth } from "@clerk/nextjs/server";
 import prisma from "@/lib/client";
 import UserinfoCardInteraction from "./UserinfoCardInteraction";
+import UpdateUser from "./UpdateUser";
 
 
 interface props {
@@ -59,7 +60,7 @@ export default async function UserInfoCard({ user }: props) {
             },
         });
         followReqRes ? (isFollowingSent = true) : (isFollowingSent = false);
-    }else{
+    } else {
         return null
     }
 
@@ -68,7 +69,11 @@ export default async function UserInfoCard({ user }: props) {
         <div className="p-4 bg-[#202020] shadow-md text-sm rounded-lg flex flex-col gap-4">
             <div className="flexBetween font-medium ">
                 <span className=" text-gray-300">User Information</span>
-                <Link href={"/"} className=" text-xs ">See all</Link>
+                {currentUserId === user.id ? (
+                    <UpdateUser user={user}/>
+                ) : (
+                    <Link href={"/"} className=" text-xs ">See all</Link>
+                )}
             </div>
 
             <div className="flex flex-col gap-4 text-gray-500">
@@ -110,18 +115,18 @@ export default async function UserInfoCard({ user }: props) {
                     </div>
                 </div>
 
-
-                <UserinfoCardInteraction
-                    userId={user.id}
-                    currentUserId={currentUserId}
-                    isUserBlocked={isUserBlocked}
-                    isFollowing={isFollowing}
-                    isFollowSent={isFollowingSent}
+                {currentUserId && currentUserId !== user.id &&
+                    <UserinfoCardInteraction
+                        userId={user.id}
+                        isUserBlocked={isUserBlocked}
+                        isFollowing={isFollowing}
+                        isFollowSent={isFollowingSent}
                     />
+                }
 
-      
+
 
             </div>
-        </div>
+        </div >
     );
 }
