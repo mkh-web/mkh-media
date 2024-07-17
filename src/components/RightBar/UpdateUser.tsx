@@ -3,73 +3,60 @@
 import { updateProfile } from "@/lib/actions";
 import { User } from "@prisma/client";
 import Image from "next/image";
-import { useActionState, useState } from "react";
-import { CldUploadWidget } from "next-cloudinary";
-import { useRouter } from "next/navigation";
-import UpdateButton from "./UpdateButton";
+import {  useState } from "react";
+//import { CldUploadWidget } from "next-cloudinary";//not available  on my countray -- end of the project
 
 const UpdateUser = ({ user }: { user: User }) => {
   const [open, setOpen] = useState(false);
-  const [cover, setCover] = useState<any>(false);
+  //const [cover, setCover] = useState<any>(false); cloudinary
 
-  const [state, formAction] = useActionState(updateProfile,{success:false,error:false});
 
-  const router = useRouter();
 
   const handleClose = () => {
     setOpen(false);
-    state.success && router.refresh();
   };
 
   return (
     <div className="">
       <span
-        className="text-blue-500 text-xs cursor-pointer"
+        className="text-orange-500 text-xs cursor-pointer"
         onClick={() => setOpen(true)}
       >
         Update
       </span>
       {open && (
-        <div className="absolute w-screen h-screen top-0 left-0 bg-black bg-opacity-65 flex items-center justify-center z-50 ">
+        <div className="fixed w-screen h-screen top-0 left-0 bg-black bg-opacity-65 flex items-center justify-center z-50 ">
           <form
-            action={(formData) =>
-              formAction({ formData, cover: cover?.secure_url || "" })
-            }
+            action={updateProfile}
             className="p-12 bg-white rounded-lg shadow-md flex flex-col gap-2 w-full md:w-1/2 xl:w-1/3 relative"
           >
             {/* TITLE */}
-            <h1>Update Profile</h1>
-            <div className="mt-4 text-xs text-gray-500">
+            <h1 className=" text-black">Update Profile</h1>
+            <div className="mt-1 mb-4 text-xs text-gray-500">
               Use the navbar profile to change the avatar or username.
             </div>
-            {/* COVER PIC UPLOAD */}
-            <CldUploadWidget
-              uploadPreset="social"
-              onSuccess={(result) => setCover(result.info)}
+            {/* COVER PIC UPLOAD
+            doesn't work since cloudinary isn't supported in my country
+
+            <div
+              className="flex flex-col gap-4 my-4"
             >
-              {({ open }) => {
-                return (
-                  <div
-                    className="flex flex-col gap-4 my-4"
-                    onClick={() => open()}
-                  >
-                    <label htmlFor="">Cover Picture</label>
-                    <div className="flex items-center gap-2 cursor-pointer">
-                      <Image
-                        src={user.cover || "/noCover.png"}
-                        alt=""
-                        width={48}
-                        height={32}
-                        className="w-12 h-8 rounded-md object-cover"
-                      />
-                      <span className="text-xs underline text-gray-600">
-                        Change
-                      </span>
-                    </div>
-                  </div>
-                );
-              }}
-            </CldUploadWidget>
+              <label htmlFor="">Cover Picture</label>
+              <div className="flex items-center gap-2 cursor-pointer">
+                <Image
+                  src={user.cover || "/noCover.png"}
+                  alt=""
+                  width={48}
+                  height={32}
+                  className="w-12 h-8 rounded-md object-cover"
+                />
+                <span className="text-xs underline text-gray-600">
+                  Change
+                </span>
+              </div>
+            </div>
+                  */}
+
 
             {/* WRAPPER */}
             <div className="flex flex-wrap justify-between gap-2 xl:gap-4">
@@ -81,7 +68,7 @@ const UpdateUser = ({ user }: { user: User }) => {
                 <input
                   type="text"
                   placeholder={user.name || "John"}
-                  className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
+                  className="bg-[#202020] ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                   name="name"
                 />
               </div>
@@ -92,7 +79,7 @@ const UpdateUser = ({ user }: { user: User }) => {
                 <input
                   type="text"
                   placeholder={user.surname || "Doe"}
-                  className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
+                  className="bg-[#202020] ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                   name="surname"
                 />
               </div>
@@ -104,7 +91,7 @@ const UpdateUser = ({ user }: { user: User }) => {
                 <input
                   type="text"
                   placeholder={user.description || "Life is beautiful..."}
-                  className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
+                  className="bg-[#202020] ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                   name="description"
                 />
               </div>
@@ -116,7 +103,7 @@ const UpdateUser = ({ user }: { user: User }) => {
                 <input
                   type="text"
                   placeholder={user.city || "New York"}
-                  className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
+                  className="bg-[#202020] ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                   name="city"
                 />
               </div>
@@ -129,7 +116,7 @@ const UpdateUser = ({ user }: { user: User }) => {
                 <input
                   type="text"
                   placeholder={user.school || "MIT"}
-                  className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
+                  className="bg-[#202020] ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                   name="school"
                 />
               </div>
@@ -142,7 +129,7 @@ const UpdateUser = ({ user }: { user: User }) => {
                 <input
                   type="text"
                   placeholder={user.work || "Apple Inc."}
-                  className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
+                  className="bg-[#202020] ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                   name="work"
                 />
               </div>
@@ -154,21 +141,16 @@ const UpdateUser = ({ user }: { user: User }) => {
                 </label>
                 <input
                   type="text"
-                  placeholder={user.website || "lama.dev"}
-                  className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
+                  placeholder={user.website || "mkh.dev"}
+                  className="bg-[#202020] ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                   name="website"
                 />
               </div>
             </div>
-            <UpdateButton/>
-            {state.success && (
-              <span className="text-green-500">Profile has been updated!</span>
-            )}
-            {state.error && (
-              <span className="text-red-500">Something went wrong!</span>
-            )}
+            <button className="bg-green-600 shadow-sm p-4 rounded-lg text-2xl">submit</button>
+        
             <div
-              className="absolute text-xl right-2 top-3 cursor-pointer"
+              className="absolute text-xl right-2 top-3 cursor-pointer text-red-600"
               onClick={handleClose}
             >
               X
