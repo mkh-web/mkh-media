@@ -260,7 +260,7 @@ export const addComment = async (postId: number, desc: string) => {
   }
 };
 
-export const addPost = async (formData: FormData, img: string) => {
+export const addPost = async (formData: FormData,) => {
   const desc = formData.get("desc") as string;
 
   const Desc = z.string().min(1).max(255);
@@ -281,7 +281,6 @@ export const addPost = async (formData: FormData, img: string) => {
       data: {
         desc: validatedDesc.data,
         userId,
-        img,
       },
     });
 

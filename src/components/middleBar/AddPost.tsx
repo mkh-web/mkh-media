@@ -1,14 +1,18 @@
+"use client"
+
 import Image from "next/image"
 import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { FaPhotoVideo, FaVideo, FaPoll } from "react-icons/fa";
 import { MdEventAvailable } from "react-icons/md";
 import prisma from "@/lib/client";
-import { auth } from "@clerk/nextjs/server";
+import { useUser } from "@clerk/nextjs";
+import { useState } from "react";
+import { addPost } from "@/lib/actions";
 
 
 export default function AddPost() {
 
-    const {userId} = auth() // عشان تتخزن معلومات التسجيل هنا 
+    //const {userId} = auth() // عشان تتخزن معلومات التسجيل هنا 
  
     
 /*
@@ -34,15 +38,23 @@ export default function AddPost() {
         }
     }
 */
-    return (
-        <div className="p-4 bg-[#202020] shadow-sm rounded-lg flexBetween gap-4 text-sm">
+const {user,isLoaded} = useUser()
+const [desc,setDesc] = useState("")
 
-            <Image src={"https://images.pexels.com/photos/1368382/pexels-photo-1368382.jpeg?auto=compress&cs=tinysrgb&w=600"} width={48} height={48} alt="avatar" className=" w-12 h-12 object-cover rounded-full" />
+if(!isLoaded) return "loading..."
+
+    return (
+        <div className="p-4 bg-[#202020] shadow-sm rounded-lg flexBetween  gap-4 text-sm">
+
+            <Image src={user?.imageUrl || "noAvatar.png"} width={48} height={48} alt="avatar" className=" w-12 h-12 object-cover rounded-full" />
 
             <div className="flex-1">
-                <form action={/*testAction*/ ""} className="flex gap-4">
-                    <textarea name="desc" id="" placeholder="What happen today" className="flex-1 resize-none bg-[#171717] rounded-md p-4"></textarea>
-                    <MdOutlineEmojiEmotions className=" cursor-pointer self-end text-xl text-orange-400" />
+                <form action={FormData =>addPost(FormData)} className="flex gap-4">
+                    <textarea name="desc" id=""
+                     placeholder="What happen today"
+                     className="flex-1 resize-none bg-[#171717] rounded-md p-4"
+                     onChange={(e)=>setDesc(e.target.value)}
+                     ></textarea>
 
                     <button>send</button>
                 </form>

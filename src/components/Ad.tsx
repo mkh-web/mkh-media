@@ -11,7 +11,6 @@ export default function Ad({ size }: props) {
         <div className="p-4 bg-[#202020] shadow-md text-sm rounded-lg">
             <div className="flexBetween text-gray-500 font-medium mb-2">
                 <span>Sponsard Ads</span>
-                <HiDotsHorizontal />
             </div>
 
             <div className={`flex flex-col ${size === "sm" ? "gap-2" : "gap-4"}`}>

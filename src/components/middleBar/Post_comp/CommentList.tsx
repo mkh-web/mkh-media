@@ -38,7 +38,6 @@ export default function CommentList({ comments, postId }: { comments: CommentWit
                     <form action={add}>
                         <input type="text" placeholder="write a comment" name="" id=""
                             onChange={e => setDesc(e.target.value)} className="bg-transparent flex-1" />
-                        <MdOutlineEmojiEmotions className=" cursor-pointer  text-xl text-orange-400" />
                     </form>
                 </div>
 
